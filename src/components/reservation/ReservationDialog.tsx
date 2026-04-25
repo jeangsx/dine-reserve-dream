@@ -83,8 +83,8 @@ export const ReservationDialog = ({ open, onOpenChange }: Props) => {
     onOpenChange(v);
   };
 
-  const next = () => setStep((s) => Math.min(4, (s + 1) as Step));
-  const back = () => setStep((s) => Math.max(0, (s - 1) as Step));
+  const next = () => setStep((s) => (Math.min(4, s + 1) as Step));
+  const back = () => setStep((s) => (Math.max(0, s - 1) as Step));
 
   const canNext = () => {
     if (step === 0) return !!date;
