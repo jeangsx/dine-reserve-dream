@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ReservationProvider } from "@/components/reservation/ReservationContext";
 import Index from "./pages/Index.tsx";
 import Carta from "./pages/Carta.tsx";
 import Historia from "./pages/Historia.tsx";
@@ -18,15 +19,17 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/carta" element={<Carta />} />
-          <Route path="/historia" element={<Historia />} />
-          <Route path="/galeria" element={<Galeria />} />
-          <Route path="/prensa" element={<Prensa />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ReservationProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/carta" element={<Carta />} />
+            <Route path="/historia" element={<Historia />} />
+            <Route path="/galeria" element={<Galeria />} />
+            <Route path="/prensa" element={<Prensa />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ReservationProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

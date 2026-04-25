@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { ReservationProvider } from "@/components/reservation/ReservationContext";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Story } from "@/components/Story";
@@ -34,19 +33,17 @@ const Index = () => {
   }, []);
 
   return (
-    <ReservationProvider>
-      <div className="min-h-screen bg-background">
-        <Navbar />
-        <main>
-          <Hero />
-          <Story />
-          <Menu />
-          <Gallery />
-          <Press />
-        </main>
-        <Footer />
-      </div>
-    </ReservationProvider>
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <Hero />
+        <Story />
+        <Menu />
+        <Gallery />
+        <Press />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
