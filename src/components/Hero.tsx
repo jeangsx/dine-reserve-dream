@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { useReservation } from "./reservation/ReservationContext";
 import heroImage from "@/assets/hero.jpg";
 
@@ -33,7 +34,7 @@ export const Hero = () => {
           <div className="mt-12 flex flex-col sm:flex-row gap-4 reveal reveal-delay-3">
             <Button variant="hero" size="xl" onClick={open}>Reservar experiencia</Button>
             <Button variant="outlineLuxe" size="xl" asChild>
-              <a href="#menu">Ver la carta</a>
+              <Link to="/carta">Ver la carta</Link>
             </Button>
           </div>
 
