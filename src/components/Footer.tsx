@@ -32,7 +32,7 @@ export const Footer = () => {
           <p className="font-display text-3xl mb-2">SAIKŌ</p>
           <p className="text-[10px] tracking-wider-luxe uppercase text-gold mb-6">Omakase 西光</p>
           <p className="text-bone/60 text-sm leading-relaxed">
-            Cocina japonesa contemporánea de inspiración botánica. Madrid.
+            Cocina japonesa contemporánea de inspiración botánica. Lima.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export const Footer = () => {
           <h3 className="text-xs tracking-luxe uppercase text-gold mb-4">Visítanos</h3>
           <p className="flex items-start gap-2 text-bone/70 text-sm leading-relaxed">
             <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-gold-soft" />
-            <span>Calle Almagro 27<br/>28010 Madrid</span>
+            <span>Av. La Floresta 245<br/>San Isidro, Lima</span>
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export const Footer = () => {
           <h3 className="text-xs tracking-luxe uppercase text-gold mb-4">Contacto</h3>
           <p className="flex items-start gap-2 text-bone/70 text-sm leading-relaxed">
             <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-gold-soft" />
-            <span>+34 91 000 00 00<br/>hola@saiko.es</span>
+            <span>+51 1 555 0000<br/>hola@saiko.pe</span>
           </p>
         </div>
       </div>
@@ -68,7 +68,7 @@ export const Footer = () => {
       <div className="border-t border-bone/10">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-bone/40">
           <p>© {new Date().getFullYear()} Saikō. Todos los derechos reservados.</p>
-          <p className="tracking-luxe uppercase">Hecho con cuidado en Madrid · 心</p>
+          <p className="tracking-luxe uppercase">Hecho con cuidado en Lima · 心</p>
         </div>
       </div>
     </footer>

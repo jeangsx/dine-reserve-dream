@@ -21,7 +21,9 @@ export const Navbar = () => {
     { label: "Carta", to: "/carta" },
     { label: "Historia", to: "/historia" },
     { label: "Galería", to: "/galeria" },
+    { label: "Eventos", to: "/eventos" },
     { label: "Prensa", to: "/prensa" },
+    { label: "Contacto", to: "/contacto" },
   ];
 
   const isHome = location.pathname === "/";

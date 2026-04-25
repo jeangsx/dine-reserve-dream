@@ -17,7 +17,7 @@ export const Hero = () => {
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-8 reveal">
             <span className="h-px w-10 bg-gold" />
-            <span className="tracking-wider-luxe text-[10px] uppercase text-gold">Tokio · Madrid · Desde 2014</span>
+            <span className="tracking-wider-luxe text-[10px] uppercase text-gold">Tokio · Lima · Desde 2014</span>
           </div>
 
           <h1 className="font-display font-light text-bone text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-balance reveal reveal-delay-1">
