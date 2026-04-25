@@ -1,95 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* === SAIKŌ — Modern Botanical Japanese Restaurant === 
+   All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core palette — deep forest, warm sand, gold accent */
+    --background: 60 18% 95%;            /* warm cream */
+    --foreground: 155 40% 8%;            /* near-black forest */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 60 22% 97%;
+    --card-foreground: 155 40% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 60 22% 97%;
+    --popover-foreground: 155 40% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 155 45% 14%;              /* deep emerald forest */
+    --primary-foreground: 48 35% 92%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 25% 88%;             /* warm linen */
+    --secondary-foreground: 155 45% 14%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 15% 90%;
+    --muted-foreground: 155 12% 32%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 38 55% 55%;                /* soft brushed gold */
+    --accent-foreground: 155 45% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 8 65% 45%;
+    --destructive-foreground: 48 35% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 18% 82%;
+    --input: 40 18% 82%;
+    --ring: 155 45% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+
+    /* Brand-specific tokens */
+    --forest: 155 50% 10%;
+    --forest-deep: 158 55% 6%;
+    --moss: 130 25% 35%;
+    --sand: 38 35% 88%;
+    --bone: 48 30% 94%;
+    --gold: 38 55% 55%;
+    --gold-soft: 40 50% 70%;
+
+    /* Gradients */
+    --gradient-forest: linear-gradient(135deg, hsl(var(--forest-deep)) 0%, hsl(var(--forest)) 50%, hsl(var(--moss) / 0.6) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold-soft)) 0%, hsl(var(--gold)) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsl(var(--forest-deep) / 0.2) 0%, hsl(var(--forest-deep) / 0.85) 100%);
+    --gradient-fade: linear-gradient(180deg, transparent 0%, hsl(var(--background)) 100%);
+
+    /* Shadows */
+    --shadow-elegant: 0 30px 60px -20px hsl(var(--forest-deep) / 0.4);
+    --shadow-soft: 0 10px 40px -10px hsl(var(--forest) / 0.18);
+    --shadow-gold: 0 10px 30px -10px hsl(var(--gold) / 0.4);
+
+    /* Motion */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.6s var(--ease-out-expo);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -99,7 +81,90 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-gradient-forest {
+    background: var(--gradient-forest);
+  }
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  .bg-gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+  .bg-gradient-fade {
+    background: var(--gradient-fade);
+  }
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  .tracking-luxe {
+    letter-spacing: 0.3em;
+  }
+  .tracking-wider-luxe {
+    letter-spacing: 0.45em;
+  }
+
+  /* Animated reveal on scroll fallback */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: reveal 1.2s var(--ease-out-expo) forwards;
+  }
+  .reveal-delay-1 { animation-delay: 0.15s; }
+  .reveal-delay-2 { animation-delay: 0.3s; }
+  .reveal-delay-3 { animation-delay: 0.45s; }
+  .reveal-delay-4 { animation-delay: 0.6s; }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float-up {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-float-up { animation: float-up 1.4s var(--ease-out-expo) forwards; }
+
+  @keyframes shimmer-line {
+    0% { transform: scaleX(0); transform-origin: left; }
+    100% { transform: scaleX(1); transform-origin: left; }
+  }
+  .animate-line { animation: shimmer-line 1.6s var(--ease-out-expo) forwards; }
 }
