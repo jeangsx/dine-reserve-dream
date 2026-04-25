@@ -1,16 +1,53 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import { ReservationProvider } from "@/components/reservation/ReservationContext";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { Story } from "@/components/Story";
+import { Menu } from "@/components/Menu";
+import { Gallery } from "@/components/Gallery";
+import { Press } from "@/components/Press";
+import { Footer } from "@/components/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useEffect(() => {
+    document.title = "Saikō · Omakase japonés botánico en Madrid";
+    const setMeta = (name: string, content: string) => {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("name", name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+    setMeta(
+      "description",
+      "Saikō, restaurante japonés de inspiración botánica en Madrid. Omakase de quince pases por el chef Hiroto Tanaka. Reserva tu mesa."
+    );
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", window.location.origin + "/");
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <ReservationProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main>
+          <Hero />
+          <Story />
+          <Menu />
+          <Gallery />
+          <Press />
+        </main>
+        <Footer />
+      </div>
+    </ReservationProvider>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
