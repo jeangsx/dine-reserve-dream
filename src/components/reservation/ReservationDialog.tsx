@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
 /* ---------- Datos del salón ---------- */
-type Table = { id: string; seats: number; zone: "Barra" | "Salón" | "Jardín"; x: number; y: number };
+type Table = { id: string; seats: number; zone: "Barra" | "Planta Baja" | "Primer Piso" | "Jardín"; x: number; y: number };
 
 const TABLES: Table[] = [
   // Barra omakase (8 asientos individuales)
@@ -22,27 +22,42 @@ const TABLES: Table[] = [
   { id: "B4", seats: 1, zone: "Barra", x: 4, y: 1 },
   { id: "B5", seats: 1, zone: "Barra", x: 5, y: 1 },
   { id: "B6", seats: 1, zone: "Barra", x: 6, y: 1 },
-  // Salón
-  { id: "S1", seats: 2, zone: "Salón", x: 1, y: 3 },
-  { id: "S2", seats: 2, zone: "Salón", x: 2, y: 3 },
-  { id: "S3", seats: 4, zone: "Salón", x: 4, y: 3 },
-  { id: "S4", seats: 4, zone: "Salón", x: 5, y: 3 },
-  { id: "S5", seats: 6, zone: "Salón", x: 1, y: 4 },
-  { id: "S6", seats: 2, zone: "Salón", x: 3, y: 4 },
+  { id: "B7", seats: 1, zone: "Barra", x: 7, y: 1 },
+  { id: "B8", seats: 1, zone: "Barra", x: 8, y: 1 },
+  // Planta Baja
+  { id: "PB1", seats: 2, zone: "Planta Baja", x: 1, y: 3 },
+  { id: "PB2", seats: 2, zone: "Planta Baja", x: 2, y: 3 },
+  { id: "PB3", seats: 4, zone: "Planta Baja", x: 4, y: 3 },
+  { id: "PB4", seats: 4, zone: "Planta Baja", x: 5, y: 3 },
+  { id: "PB5", seats: 6, zone: "Planta Baja", x: 1, y: 4 },
+  { id: "PB6", seats: 2, zone: "Planta Baja", x: 3, y: 4 },
+  { id: "PB7", seats: 4, zone: "Planta Baja", x: 5, y: 4 },
+  { id: "PB8", seats: 2, zone: "Planta Baja", x: 6, y: 4 },
+  // Primer Piso
+  { id: "P1-1", seats: 2, zone: "Primer Piso", x: 1, y: 1 },
+  { id: "P1-2", seats: 2, zone: "Primer Piso", x: 2, y: 1 },
+  { id: "P1-3", seats: 4, zone: "Primer Piso", x: 3, y: 1 },
+  { id: "P1-4", seats: 4, zone: "Primer Piso", x: 4, y: 1 },
+  { id: "P1-5", seats: 6, zone: "Primer Piso", x: 1, y: 2 },
+  { id: "P1-6", seats: 8, zone: "Primer Piso", x: 3, y: 2 },
+  { id: "P1-7", seats: 2, zone: "Primer Piso", x: 5, y: 2 },
+  { id: "P1-8", seats: 4, zone: "Primer Piso", x: 6, y: 2 },
   // Jardín
-  { id: "J1", seats: 4, zone: "Jardín", x: 5, y: 4 },
-  { id: "J2", seats: 8, zone: "Jardín", x: 2, y: 5 },
+  { id: "J1", seats: 4, zone: "Jardín", x: 1, y: 1 },
+  { id: "J2", seats: 8, zone: "Jardín", x: 2, y: 1 },
+  { id: "J3", seats: 6, zone: "Jardín", x: 3, y: 1 },
+  { id: "J4", seats: 4, zone: "Jardín", x: 4, y: 1 },
 ];
 
 // Mesas ya reservadas por hora (mock)
 const OCCUPIED: Record<string, string[]> = {
-  "19:00": ["S1", "S5"],
-  "19:30": ["B2", "S3"],
-  "20:00": ["B1", "B3", "S2", "J2"],
-  "20:30": ["S4", "B4"],
-  "21:00": ["S6", "J1", "B5"],
-  "21:30": ["S1", "S3"],
-  "22:00": [],
+  "19:00": ["PB1", "PB5", "P1-3"],
+  "19:30": ["B2", "PB3", "J1"],
+  "20:00": ["B1", "B3", "PB2", "J2", "P1-6"],
+  "20:30": ["PB4", "B4", "P1-1"],
+  "21:00": ["PB6", "J1", "B5", "P1-7"],
+  "21:30": ["PB1", "PB3", "P1-4"],
+  "22:00": ["B7", "P1-2"],
 };
 
 const TIMES = Object.keys(OCCUPIED);
@@ -175,7 +190,7 @@ export const ReservationDialog = ({ open, onOpenChange }: Props) => {
             </div>
 
             {/* Body */}
-            <div className="px-6 sm:px-10 py-10 min-h-[360px]">
+            <div className="px-6 sm:px-10 py-10 min-h-[420px]">
               {step === 0 && <DayStep days={days} value={date} onChange={(d) => { setDate(d); }} />}
               {step === 1 && <GuestsStep value={guests} onChange={setGuests} />}
               {step === 2 && <TimeStep value={time} onChange={(t) => { setTime(t); setTableId(""); }} />}
@@ -298,7 +313,7 @@ const TimeStep = ({ value, onChange }: { value: string; onChange: (t: string) =>
 const TableStep = ({ guests, occupied, value, onChange }: {
   guests: number; occupied: string[]; value: string; onChange: (id: string) => void;
 }) => {
-  const zones: Array<Table["zone"]> = ["Barra", "Salón", "Jardín"];
+  const zones: Array<Table["zone"]> = ["Barra", "Planta Baja", "Primer Piso", "Jardín"];
   return (
     <div>
       <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
@@ -311,7 +326,7 @@ const TableStep = ({ guests, occupied, value, onChange }: {
       </div>
 
       {/* Plano del salón */}
-      <div className="bg-secondary/40 border border-border/60 rounded-sm p-5 sm:p-8">
+      <div className="bg-secondary/40 border border-border/60 rounded-sm p-5 sm:p-8 max-h-[400px] overflow-y-auto">
         {/* Pantalla / Barra de chef */}
         <div className="mx-auto max-w-md mb-2 text-center">
           <div className="h-1 bg-gradient-to-r from-transparent via-accent to-transparent rounded-full" />
@@ -345,7 +360,7 @@ const TableStep = ({ guests, occupied, value, onChange }: {
                       )}
                     >
                       <Armchair className="h-3.5 w-3.5 opacity-70" />
-                      <span className="font-display text-base leading-none mt-0.5">{t.id}</span>
+                      <span className="font-display text-xs leading-none mt-0.5">{t.id}</span>
                       <span className="text-[9px] tracking-luxe uppercase mt-0.5 opacity-80">{t.seats}p</span>
                     </button>
                   );
@@ -370,29 +385,83 @@ const DataStep = ({ onSubmit, errors }: {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   errors: Record<string, string>;
 }) => (
-  <form id="reservation-data-form" onSubmit={onSubmit} className="space-y-5">
-    <p className="text-sm text-foreground/60">Casi listo. Déjanos tus datos para confirmar la reserva.</p>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <form id="reservation-data-form" onSubmit={onSubmit} className="space-y-6">
+    <div className="bg-secondary/30 border border-border/40 rounded-sm p-6">
+      <p className="text-sm text-foreground/60 mb-1">Casi listo. Déjanos tus datos para confirmar la reserva.</p>
+      <p className="text-xs text-muted-foreground">Recibirás la confirmación por correo electrónico.</p>
+    </div>
+
+    <div className="space-y-5">
       <div className="space-y-2">
-        <Label htmlFor="name" className="text-xs tracking-luxe uppercase text-foreground/70">Nombre</Label>
-        <Input id="name" name="name" maxLength={80} placeholder="Tu nombre completo" className="bg-background/50 border-border/60 rounded-none h-11" />
-        {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
+        <Label htmlFor="name" className="text-xs tracking-luxe uppercase text-foreground/70 flex items-center gap-2">
+          <span className="h-1 w-1 rounded-full bg-accent" />
+          Nombre completo
+        </Label>
+        <Input 
+          id="name" 
+          name="name" 
+          maxLength={80} 
+          placeholder="Ej: María García López" 
+          className="bg-background border-border/60 focus:border-accent rounded-sm h-12 text-base" 
+        />
+        {errors.name && <p className="text-xs text-destructive flex items-center gap-1.5">⚠ {errors.name}</p>}
       </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-xs tracking-luxe uppercase text-foreground/70 flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-accent" />
+            Correo electrónico
+          </Label>
+          <Input 
+            id="email" 
+            name="email" 
+            type="email" 
+            maxLength={255} 
+            placeholder="tu@correo.com" 
+            className="bg-background border-border/60 focus:border-accent rounded-sm h-12 text-base" 
+          />
+          {errors.email && <p className="text-xs text-destructive flex items-center gap-1.5">⚠ {errors.email}</p>}
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="phone" className="text-xs tracking-luxe uppercase text-foreground/70 flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-accent" />
+            Teléfono
+          </Label>
+          <Input 
+            id="phone" 
+            name="phone" 
+            type="tel" 
+            maxLength={25} 
+            placeholder="+34 600 000 000" 
+            className="bg-background border-border/60 focus:border-accent rounded-sm h-12 text-base" 
+          />
+          {errors.phone && <p className="text-xs text-destructive flex items-center gap-1.5">⚠ {errors.phone}</p>}
+        </div>
+      </div>
+
       <div className="space-y-2">
-        <Label htmlFor="phone" className="text-xs tracking-luxe uppercase text-foreground/70">Teléfono</Label>
-        <Input id="phone" name="phone" type="tel" maxLength={25} placeholder="+34 600 000 000" className="bg-background/50 border-border/60 rounded-none h-11" />
-        {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
+        <Label htmlFor="notes" className="text-xs tracking-luxe uppercase text-foreground/70 flex items-center gap-2">
+          <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+          Notas adicionales (opcional)
+        </Label>
+        <Textarea 
+          id="notes" 
+          name="notes" 
+          maxLength={500} 
+          rows={4} 
+          placeholder="Alergias alimentarias, ocasión especial, preferencias de asiento, peticiones especiales..." 
+          className="bg-background border-border/60 focus:border-accent rounded-sm resize-none text-base" 
+        />
+        {errors.notes && <p className="text-xs text-destructive flex items-center gap-1.5">⚠ {errors.notes}</p>}
       </div>
     </div>
-    <div className="space-y-2">
-      <Label htmlFor="email" className="text-xs tracking-luxe uppercase text-foreground/70">Correo</Label>
-      <Input id="email" name="email" type="email" maxLength={255} placeholder="tu@correo.com" className="bg-background/50 border-border/60 rounded-none h-11" />
-      {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
-    </div>
-    <div className="space-y-2">
-      <Label htmlFor="notes" className="text-xs tracking-luxe uppercase text-foreground/70">Notas (opcional)</Label>
-      <Textarea id="notes" name="notes" maxLength={500} rows={3} placeholder="Alergias, ocasión especial, peticiones…" className="bg-background/50 border-border/60 rounded-none resize-none" />
-      {errors.notes && <p className="text-xs text-destructive">{errors.notes}</p>}
+
+    <div className="bg-accent/5 border-l-2 border-accent rounded-sm p-4">
+      <p className="text-xs text-foreground/70 leading-relaxed">
+        Al confirmar, aceptas nuestra política de cancelación: puedes cancelar sin cargo hasta 24h antes de tu reserva.
+      </p>
     </div>
   </form>
 );

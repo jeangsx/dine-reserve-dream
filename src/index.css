@@ -167,4 +167,12 @@
     100% { transform: scaleX(1); transform-origin: left; }
   }
   .animate-line { animation: shimmer-line 1.6s var(--ease-out-expo) forwards; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 18s linear infinite;
+  }
 }

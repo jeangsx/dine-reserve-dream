@@ -1,3 +1,5 @@
+import * as React from "react";
+
 const reviews = [
   {
     quote: "Saikō no es un restaurante: es un viaje sensorial. Tanaka borda cada nigiri con una precisión casi meditativa.",
@@ -16,7 +18,7 @@ const reviews = [
   },
 ];
 
-const press = ["MICHELIN", "REPSOL", "VOGUE", "EL PAÍS", "50 BEST", "CONDÉ NAST"];
+const press = ["MICHELIN", "REPSOL", "VOGUE", "EL PAÍS", "50 BEST", "CONDÉ NAST", "TRAVELER", "FORBES"];
 
 export const Press = () => {
   return (
@@ -49,10 +51,10 @@ export const Press = () => {
           ))}
         </div>
 
-        <div className="border-y border-border py-10">
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-            {press.map((p) => (
-              <span key={p} className="font-display text-xl tracking-luxe text-muted-foreground/70 hover:text-primary transition-colors">
+        <div className="border-y border-border py-10 overflow-hidden">
+          <div className="flex w-max animate-marquee">
+            {[...press, ...press].map((p, i) => (
+              <span key={i} className="mx-12 font-display tracking-luxe text-xl text-muted-foreground/70 whitespace-nowrap hover:text-primary transition-colors cursor-default">
                 {p}
               </span>
             ))}

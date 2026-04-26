@@ -9,6 +9,8 @@ import dish7 from "@/assets/dish-7.jpg";
 import dish8 from "@/assets/dish-8.jpg";
 import dish9 from "@/assets/dish-9.jpg";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const courses = [
   {
@@ -85,9 +87,87 @@ const courses = [
   },
 ];
 
+const extraDishes = [
+  {
+    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+    course: "X",
+    category: "Carne",
+    title: "Wagyu Tataki A5",
+    desc: "Lomo de wagyu sellado al carbón binchotan, ponzu de yuzu y micro hierbas.",
+    price: "420",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1512003867696-6d5ce6835040?w=800&q=80",
+    course: "XI",
+    category: "Tempura",
+    title: "Tempura Trilogía",
+    desc: "Langostino, calabaza kabocha y espárrago verde en masa ligera de soda fría.",
+    price: "175",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
+    course: "XII",
+    category: "Postre",
+    title: "Mochi de Sakura",
+    desc: "Mochi artesanal relleno de anko de fresa, polvo de flor de cerezo y helado de vainilla bourbon.",
+    price: "115",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80",
+    course: "XIII",
+    category: "Sushi",
+    title: "Uramaki Trufa",
+    desc: "Rollo invertido de salmón ahumado, queso crema y láminas de trufa negra de temporada.",
+    price: "210",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=800&q=80",
+    course: "XIV",
+    category: "Sashimi",
+    title: "Hamachi Jalapeño",
+    desc: "Pez limón del Atlántico, leche de tigre de yuzu, jalapeño fresco y aceite de sésamo tostado.",
+    price: "195",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
+    course: "XV",
+    category: "Caldo",
+    title: "Miso Shiru Premium",
+    desc: "Sopa de miso blanco shiro con tofu de seda, wakame del Pacífico y dashi de bonito ahumado.",
+    price: "85",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=800&q=80",
+    course: "XVI",
+    category: "Maki",
+    title: "Spider Roll",
+    desc: "Cangrejo de caparazón blando frito, pepino, aguacate y mayonesa de sriracha casera.",
+    price: "190",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800&q=80",
+    course: "XVII",
+    category: "Vapor",
+    title: "Shumai de Vieira",
+    desc: "Dim sum de vieira hokkaido al vapor, aceite de trufa blanca y huevas de salmón salvaje.",
+    price: "160",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
+    course: "XVIII",
+    category: "Postre",
+    title: "Sorbete de Yuzu",
+    desc: "Sorbete cítrico de yuzu hokkaido, flores comestibles del jardín y oro 24 quilates.",
+    price: "95",
+  },
+];
+
+const VISIBLE_COUNT = 6;
+
 export const Menu = () => {
-  const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? courses : courses.slice(0, 3);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const visible = courses.slice(0, VISIBLE_COUNT);
+  const extra = extraDishes;
 
   return (
     <section id="menu" className="py-24 md:py-36 bg-secondary/40 relative">
@@ -124,15 +204,45 @@ export const Menu = () => {
           ))}
         </div>
 
+        {/* Dialog centrado con platos extra */}
+        <Dialog open={sheetOpen} onOpenChange={setSheetOpen}>
+          <DialogContent className="max-w-4xl w-full p-0">
+            <DialogHeader className="px-8 pt-8 pb-4 border-b border-border">
+              <DialogTitle className="font-display font-light text-3xl text-primary">Más platos</DialogTitle>
+            </DialogHeader>
+            <ScrollArea className="max-h-[70vh]">
+              <div className="grid sm:grid-cols-2 gap-6 p-8">
+                {extra.map((c) => (
+                  <article key={c.title} className="group bg-bone shadow-soft hover:shadow-elegant transition-smooth">
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img src={c.img} alt={c.title} loading="lazy" width={1024} height={768} className="w-full h-full object-cover group-hover:scale-105 transition-smooth" />
+                    </div>
+                    <div className="p-5">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="font-display italic text-accent text-sm">Pase {c.course} · {c.category}</span>
+                        <span className="font-display text-xl text-primary">S/ {c.price}</span>
+                      </div>
+                      <h3 className="font-display text-xl text-primary mb-2">{c.title}</h3>
+                      <p className="text-foreground/65 text-sm leading-relaxed">{c.desc}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </ScrollArea>
+          </DialogContent>
+        </Dialog>
+
         <div className="mt-20 flex flex-col items-center gap-6">
           <div className="text-center">
             <p className="tracking-luxe uppercase text-xs text-muted-foreground">Menú degustación completo</p>
             <p className="font-display text-4xl text-primary mt-2">S/ 720 <span className="text-base text-muted-foreground italic">/ persona</span></p>
             <p className="text-sm text-muted-foreground mt-2">Maridaje de sake opcional · S/ 380</p>
           </div>
-          <Button variant="forest" size="xl" onClick={() => setShowAll(!showAll)}>
-            {showAll ? "Ver menos platos" : "Ver más platos"}
-          </Button>
+          {extra.length > 0 && (
+            <Button variant="forest" size="xl" onClick={() => setSheetOpen(true)}>
+              Ver más platos
+            </Button>
+          )}
         </div>
       </div>
     </section>
