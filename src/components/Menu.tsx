@@ -98,7 +98,7 @@ const courses = [
 
 const extraDishes = [
   {
-    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+    img: dish10,
     course: "X",
     category: "Carne",
     title: "Wagyu Tataki A5",
@@ -106,7 +106,7 @@ const extraDishes = [
     price: "420",
   },
   {
-    img: "https://images.unsplash.com/photo-1512003867696-6d5ce6835040?w=800&q=80",
+    img: dish11,
     course: "XI",
     category: "Tempura",
     title: "Tempura Trilogía",
@@ -114,7 +114,7 @@ const extraDishes = [
     price: "175",
   },
   {
-    img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
+    img: dish12,
     course: "XII",
     category: "Postre",
     title: "Mochi de Sakura",
@@ -122,7 +122,7 @@ const extraDishes = [
     price: "115",
   },
   {
-    img: "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80",
+    img: dish13,
     course: "XIII",
     category: "Sushi",
     title: "Uramaki Trufa",
@@ -130,7 +130,7 @@ const extraDishes = [
     price: "210",
   },
   {
-    img: "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=800&q=80",
+    img: dish14,
     course: "XIV",
     category: "Sashimi",
     title: "Hamachi Jalapeño",
@@ -138,7 +138,7 @@ const extraDishes = [
     price: "195",
   },
   {
-    img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
+    img: dish15,
     course: "XV",
     category: "Caldo",
     title: "Miso Shiru Premium",
@@ -146,7 +146,7 @@ const extraDishes = [
     price: "85",
   },
   {
-    img: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=800&q=80",
+    img: dish16,
     course: "XVI",
     category: "Maki",
     title: "Spider Roll",
@@ -154,7 +154,7 @@ const extraDishes = [
     price: "190",
   },
   {
-    img: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800&q=80",
+    img: dish17,
     course: "XVII",
     category: "Vapor",
     title: "Shumai de Vieira",
@@ -162,7 +162,7 @@ const extraDishes = [
     price: "160",
   },
   {
-    img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
+    img: dish18,
     course: "XVIII",
     category: "Postre",
     title: "Sorbete de Yuzu",
