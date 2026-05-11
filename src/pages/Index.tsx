@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Saikō · Omakase japonés botánico en Madrid";
+    document.title = "Sabor Gourmet · Omakase japonés botánico en Madrid";
     const setMeta = (name: string, content: string) => {
       let el = document.querySelector(`meta[name="${name}"]`);
       if (!el) {
@@ -21,7 +21,7 @@ const Index = () => {
     };
     setMeta(
       "description",
-      "Saikō, restaurante japonés de inspiración botánica en Madrid. Omakase de quince pases por el chef Hiroto Tanaka. Reserva tu mesa."
+      "Sabor Gourmet, restaurante japonés de inspiración botánica en Madrid. Omakase de quince pases por el chef Hiroto Tanaka. Reserva tu mesa."
     );
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {

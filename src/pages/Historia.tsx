@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 
 const Historia = () => {
   useEffect(() => {
-    document.title = "Nuestra historia · Saikō";
+    document.title = "Nuestra historia · Sabor Gourmet";
   }, []);
   return (
     <div className="min-h-screen bg-background">

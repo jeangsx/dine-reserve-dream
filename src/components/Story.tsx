@@ -28,7 +28,7 @@ export const Story = () => {
 
             <p className="mt-8 text-foreground/75 text-lg leading-relaxed">
               «Un encuentro, una oportunidad». Esa es la filosofía que el chef Hiroto Tanaka 
-              aprendió en Ginza y que hoy guía cada noche en Saikō. Cada servicio es único: 
+              aprendió en Ginza y que hoy guía cada noche en Sabor Gourmet. Cada servicio es único: 
               irrepetible, vivo, en armonía con la estación.
             </p>
 

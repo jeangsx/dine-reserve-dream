@@ -9,7 +9,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroImage} alt="Saikō omakase counter" width={1920} height={1080} className="w-full h-full object-cover" />
+        <img src={heroImage} alt="Sabor Gourmet omakase counter" width={1920} height={1080} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-overlay" />
       </div>
 

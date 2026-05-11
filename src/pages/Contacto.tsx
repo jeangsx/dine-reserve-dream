@@ -8,7 +8,7 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 const Contacto = () => {
   const { open } = useReservation();
   useEffect(() => {
-    document.title = "Contacto · Saikō Omakase";
+    document.title = "Contacto · Sabor Gourmet";
   }, []);
 
   return (
@@ -46,7 +46,7 @@ const Contacto = () => {
                 <Mail className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-display text-xl text-primary mb-1">Email</h3>
-                  <p className="text-foreground/70">hola@saiko.pe<br/>eventos@saiko.pe</p>
+                  <p className="text-foreground/70">hola@saborgourmet.com<br/>eventos@saborgourmet.com</p>
                 </div>
               </div>
               <div className="flex gap-4">

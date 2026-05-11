@@ -33,8 +33,8 @@ export const Navbar = () => {
     <header className={`fixed top-0 left-0 right-0 z-40 transition-smooth ${transparent ? "bg-transparent" : "bg-forest-deep/85 backdrop-blur-lg border-b border-bone/10"}`}>
       <nav className="container flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-2 text-bone">
-          <span className="font-display text-2xl tracking-wide">SAIKŌ</span>
-          <span className="hidden sm:inline text-[10px] tracking-wider-luxe uppercase text-gold">Omakase · 西光</span>
+          <span className="font-display text-2xl tracking-wide">SABOR GOURMET</span>
+          <span className="hidden sm:inline text-[10px] tracking-wider-luxe uppercase text-gold">Omakase · Gourmet</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-10">

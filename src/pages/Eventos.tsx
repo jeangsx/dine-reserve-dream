@@ -30,7 +30,7 @@ const events = [
 const Eventos = () => {
   const { open } = useReservation();
   useEffect(() => {
-    document.title = "Eventos · Saikō Omakase";
+    document.title = "Eventos · Sabor Gourmet";
   }, []);
 
   return (
@@ -38,7 +38,7 @@ const Eventos = () => {
       <Navbar />
       <main className="pt-20">
         <section className="relative h-[60vh] overflow-hidden">
-          <img src={interior} alt="Saikō salón privado" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={interior} alt="Sabor Gourmet salón privado" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-overlay" />
           <div className="container relative z-10 h-full flex items-end pb-16">
             <div className="max-w-2xl">

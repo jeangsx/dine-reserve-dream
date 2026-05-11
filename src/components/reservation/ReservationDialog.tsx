@@ -153,7 +153,7 @@ export const ReservationDialog = ({ open, onOpenChange }: Props) => {
               <DialogTitle className="font-display text-2xl sm:text-3xl font-light leading-tight">
                 {STEP_LABELS[step]}
               </DialogTitle>
-              <DialogDescription className="sr-only">Reserva tu mesa en Saikō paso a paso.</DialogDescription>
+              <DialogDescription className="sr-only">Reserva tu mesa en Sabor Gourmet paso a paso.</DialogDescription>
 
               {/* Stepper */}
               <div className="mt-5 grid grid-cols-5 gap-2">

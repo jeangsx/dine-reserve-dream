@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 
 const Carta = () => {
   useEffect(() => {
-    document.title = "Carta · Saikō Omakase";
+    document.title = "Carta · Sabor Gourmet";
   }, []);
   return (
     <div className="min-h-screen bg-background">

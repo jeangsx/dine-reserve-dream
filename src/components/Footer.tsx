@@ -29,8 +29,8 @@ export const Footer = () => {
       {/* Info grid */}
       <div className="container py-16 grid md:grid-cols-4 gap-12">
         <div className="md:col-span-1">
-          <p className="font-display text-3xl mb-2">SAIKŌ</p>
-          <p className="text-[10px] tracking-wider-luxe uppercase text-gold mb-6">Omakase 西光</p>
+          <p className="font-display text-3xl mb-2">SABOR GOURMET</p>
+          <p className="text-[10px] tracking-wider-luxe uppercase text-gold mb-6">Omakase · Gourmet</p>
           <p className="text-bone/60 text-sm leading-relaxed">
             Cocina japonesa contemporánea de inspiración botánica. Lima.
           </p>
@@ -60,14 +60,14 @@ export const Footer = () => {
           <h3 className="text-xs tracking-luxe uppercase text-gold mb-4">Contacto</h3>
           <p className="flex items-start gap-2 text-bone/70 text-sm leading-relaxed">
             <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-gold-soft" />
-            <span>+51 1 555 0000<br/>hola@saiko.pe</span>
+            <span>+51 1 555 0000<br/>hola@saborgourmet.com</span>
           </p>
         </div>
       </div>
 
       <div className="border-t border-bone/10">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-bone/40">
-          <p>© {new Date().getFullYear()} Saikō. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Sabor Gourmet. Todos los derechos reservados.</p>
           <p className="tracking-luxe uppercase">Hecho con cuidado en Lima · 心</p>
         </div>
       </div>

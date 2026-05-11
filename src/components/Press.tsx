@@ -2,7 +2,7 @@ import * as React from "react";
 
 const reviews = [
   {
-    quote: "Saikō no es un restaurante: es un viaje sensorial. Tanaka borda cada nigiri con una precisión casi meditativa.",
+    quote: "Sabor Gourmet no es un restaurante: es un viaje sensorial. Tanaka borda cada nigiri con una precisión casi meditativa.",
     author: "Andrea Fontán",
     source: "El País Gastronomía",
   },
