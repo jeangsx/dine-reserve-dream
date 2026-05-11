@@ -49,6 +49,13 @@ const TABLES: Table[] = [
   { id: "J4", seats: 4, zone: "Jardín", x: 4, y: 1 },
 ];
 
+const TABLE_ID_MAP: Record<string, number> = {
+  "B1":1,  "B2":2,  "B3":3,  "B4":4,  "B5":5,  "B6":6,  "B7":7,  "B8":8,
+  "PB1":9, "PB2":10,"PB3":11,"PB4":12,"PB5":13,"PB6":14,"PB7":15,"PB8":16,
+  "P1-1":17,"P1-2":18,"P1-3":19,"P1-4":20,"P1-5":21,"P1-6":22,"P1-7":23,"P1-8":24,
+  "J1":25, "J2":26, "J3":27, "J4":28,
+};
+
 // Mesas ya reservadas por hora (mock)
 const OCCUPIED: Record<string, string[]> = {
   "19:00": ["PB1", "PB5", "P1-3"],
@@ -109,7 +116,7 @@ export const ReservationDialog = ({ open, onOpenChange }: Props) => {
     return true;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data = {
@@ -127,7 +134,28 @@ export const ReservationDialog = ({ open, onOpenChange }: Props) => {
       return;
     }
     setErrors({});
-    setSuccess(true);
+
+    try {
+      const res = await fetch("http://localhost:8080/api/reservas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clienteNombre: data.name,
+          clienteTelefono: data.phone,
+          mesaId: TABLE_ID_MAP[tableId],
+          fecha: date && time ? `${format(date, "yyyy-MM-dd")}T${time}:00` : null,
+          personas: guests,
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setSuccess(true);
+      } else {
+        toast.error(json.mensaje ?? "No se pudo confirmar la reserva");
+      }
+    } catch {
+      toast.error("No se pudo conectar con el servidor");
+    }
   };
 
   const occupied = OCCUPIED[time] ?? [];
